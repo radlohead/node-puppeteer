@@ -14,6 +14,10 @@ async function browserGo() {
     await page.type('input[type="email"]', userInfo.id)
     await page.type('input[type="password"]', userInfo.password)
     await page.click('#loginBtn')
+
+    setTimeout(async () => {
+        await browser.close()
+    }, 2000)
 }
 browserGo()
 
