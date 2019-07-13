@@ -14,6 +14,11 @@ async function browserGo() {
     await page.type('input[type="password"]', userInfo.password)
     await page.click('#loginBtn')
 
+    const isLoginAfterPage = await page.waitForSelector('.link_num')
+    if (isLoginAfterPage) {
+        await page.click('.link_num')
+    }
+
     setTimeout(async () => {
         await browser.close()
     }, 2000)
