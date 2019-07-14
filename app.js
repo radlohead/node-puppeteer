@@ -27,7 +27,10 @@ async function browserGo() {
     const mailTitleGapRemove = mailTitle.map(text =>
         text.replace(/\n/g, '').trim()
     )
-    console.log(mailTitleGapRemove)
+    const mailTitleGapRemoveJson = mailTitleGapRemove.map(title => ({
+        title: title
+    }))
+    console.log(mailTitleGapRemoveJson)
 
     // setTimeout(async () => {
     //     await browser.close()
