@@ -19,9 +19,9 @@ async function browserGo() {
         await page.click('.link_num')
     }
 
-    setTimeout(async () => {
-        await browser.close()
-    }, 2000)
+    // setTimeout(async () => {
+    //     await browser.close()
+    // }, 2000)
 }
 browserGo()
 
