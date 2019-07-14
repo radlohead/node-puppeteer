@@ -18,13 +18,16 @@ async function browserGo() {
     await page.click('.link_num')
     await page.waitForSelector('.info_subject .tit_subject')
 
-    const text = await page.evaluate(() =>
+    const mailTitle = await page.evaluate(() =>
         Array.from(
             document.querySelectorAll('.info_subject .tit_subject'),
             ele => ele.textContent
         )
     )
-    console.log('text: ', text)
+    const mailTitleGapRemove = mailTitle.map(text =>
+        text.replace(/\n/g, '').trim()
+    )
+    console.log(mailTitleGapRemove)
 
     // setTimeout(async () => {
     //     await browser.close()
