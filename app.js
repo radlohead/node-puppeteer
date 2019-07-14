@@ -14,10 +14,17 @@ async function browserGo() {
     await page.type('input[type="password"]', userInfo.password)
     await page.click('#loginBtn')
 
-    const isLoginAfterPage = await page.waitForSelector('.link_num')
-
-    if (!isLoginAfterPage) return
+    await page.waitForSelector('.link_num')
     await page.click('.link_num')
+    await page.waitForSelector('.info_subject .tit_subject')
+
+    const text = await page.evaluate(() =>
+        Array.from(
+            document.querySelectorAll('.info_subject .tit_subject'),
+            ele => ele.textContent
+        )
+    )
+    console.log('text: ', text)
 
     // setTimeout(async () => {
     //     await browser.close()
