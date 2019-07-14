@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const fs = require('fs')
 const express = require('express')
 const app = express()
 const userInfo = require('./userInfo')
@@ -30,6 +31,14 @@ async function browserGo() {
     const mailTitleGapRemoveJson = mailTitleGapRemove.map(title => ({
         title: title
     }))
+    fs.writeFile(
+        'mail-title.json',
+        JSON.stringify(mailTitleGapRemoveJson),
+        err => {
+            if (err) throw Error(err)
+            console.log('mail-title.json file created success')
+        }
+    )
     console.log(mailTitleGapRemoveJson)
 
     // setTimeout(async () => {
